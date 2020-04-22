@@ -78,8 +78,12 @@ function temperatureCtoF(temp) {
 */
 function temperatureInF(temp) {
   /* code here */
-  if(temp + 'c'){
-    return Math.round(temperatureCtoF(temp + 'F'));
+  let cTemp = temperatureCtoF();
+  let fTemp = cTemp - 32 * 5 / 9;
+  if(temp == cTemp + 'f' || temp == cTemp + 'F'){
+    return cTemp;
+  }else{
+    return fTemp;
   }
 }
 
@@ -100,8 +104,9 @@ function temperatureInF(temp) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
+function makePersonObject(id,name,email) {
   /* code here */
+  return {id, name, email};
 }
 
 /**
@@ -117,8 +122,9 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
+function getName({name}) {
   /* code here */
+  return `my name is ${name}`;
 }
 
 
