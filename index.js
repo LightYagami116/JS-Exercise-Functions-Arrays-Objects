@@ -76,14 +76,14 @@ function temperatureCtoF(temp) {
  *
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(temp) {
+function temperatureInF(temp, unit) {
   /* code here */
-  let cTemp = temperatureCtoF();
-  let fTemp = cTemp - 32 * 5 / 9;
-  if(temp == cTemp + 'f' || temp == cTemp + 'F'){
-    return cTemp;
+  //let cTemp = Math.round(temperatureCtoF(temp));
+  //let fTemp = Math.round(cTemp - 32 * 5 / 9);
+  if(unit === 'F'){
+    return temp + 'F';
   }else{
-    return fTemp;
+    return temperatureCtoF(temp) + 'F';
   }
 }
 
@@ -106,7 +106,7 @@ function temperatureInF(temp) {
 */
 function makePersonObject(id,name,email) {
   /* code here */
-  return {id, name, email};
+  return {id: id, name: name, email: email};
 }
 
 /**
@@ -143,8 +143,10 @@ function getName({name}) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
+let fruit = ['orange', 'grape', 'apple', 'banana', 'mango'];
+function appleIndex(fruit) {
   /* code here */
+  return fruit.indexOf('apple');
 }
 
 /**
@@ -162,8 +164,20 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
+//let fruits = ['orange', 'apple', 'banana', 'apples', 'apple', 'mango'];
+
+function isItAnApple(fruits) {
   /* code here */
+  let nFruits = [];
+  for(let i = 0; i < fruits.length; i++){
+    if(fruits[i] !== 'apple'){
+      nFruits.push(false);
+    }else{
+      nFruits.push(true);
+    }
+  }
+  return nFruits;
+  //console.log(isItAnApple(fruits));
 }
 
 
@@ -220,8 +234,10 @@ function get3rdCar(inventory) {
  * For example, if getCarInfoByIndex is invoked with the inventory and the number 0,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoByIndex(inventory, index) {
+function getCarInfoByIndex(inventory) {
   /* code here */
+  const the1st = inventory[0];
+  return `${the1st.car_make} ${the1st.car_model}`;
 }
 
 /**
@@ -229,14 +245,16 @@ function getCarInfoByIndex(inventory, index) {
  *
  * @instructions
  * getLastCarInfo takes a single argument:
- *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
+ *  (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getLastCarInfo returns a string in the format `This is a {car_make} {car_model}
  *
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
+function getLastCarInfo(inventory) {
   /* code here */
+  const thelast = inventory[49];
+  return `${thelast.car_make} ${thelast.car_model}`;
 }
 
 /**
@@ -248,8 +266,14 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
+function getModelYears(inventory) {
   /* code here */
+  let carYears = [];
+  for(let i = 0; i < inventory.length; i++){
+    const year = inventory[i].car_year;
+    carYears.push(year);
+  }
+  return carYears;
 }
 
 /**
